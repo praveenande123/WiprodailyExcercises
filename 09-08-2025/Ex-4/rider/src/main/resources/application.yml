@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: rider-service
+  datasource:
+    url: jdbc:mysql://localhost:3306/riderdb?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true
+    username: root
+    password: rootpassword
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+
+kafka:
+  bootstrap-servers: localhost:9092
+
+rider:
+  kafka:
+    topic-r2u: R2U
+    topic-u2r: U2R
+    group-id: rider-service-group
+
+server:
+  port: 8080

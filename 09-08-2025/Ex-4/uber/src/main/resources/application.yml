@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: uber-service
+  datasource:
+    url: jdbc:mysql://localhost:3306/uberdb?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true
+    username: root
+    password: rootpassword
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+
+kafka:
+  bootstrap-servers: localhost:9092
+
+uber:
+  kafka:
+    topic-r2u: R2U
+    topic-u2r: U2R
+    group-id: uber-service-group
+
+server:
+  port: 8090
