@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Badminton Blog - Praveen Kumar Ande</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+             font-family: Arial, sans-serif;
+              margin: 0;
+               background: #f5f7fa; 
+               color: #222;
+             }
+        header, footer { 
+            background: #2a5298;
+             color: #fff; text-align: center;
+              padding: 16px 0;
+             }
+       
+        .hero { background: #e9ebed;
+             text-align: center; 
+             padding: 32px 10px 18px 10px; 
+            }
+        .container { display: flex;
+             flex-wrap: wrap; 
+             max-width: 900px;
+              margin: 24px auto;
+               gap: 24px; 
+            }
+        main { flex: 2; 
+            background: #fff;
+             border-radius: 8px;
+              padding: 20px;
+             }
+        aside { flex: 1;
+             background: #fff;
+              border-radius: 8px;
+               padding: 20px;
+                min-width: 220px; }
+        img { max-width: 100%;
+             border-radius: 6px;
+              margin: 12px 0;
+             }
+        
+        .author img { width: 60px;
+             height: 60px; 
+             border-radius: 50%; }
+        .author-name { font-weight: bold;
+             margin: 8px 0 4px 0; }
+        .author-bio { font-size: 0.95rem;
+             color: #444; }
+        .author-social a { margin: 0 4px;
+             color: #2a5298; 
+             text-decoration: none; }
+        .recent-posts-title { font-weight: bold; 
+            margin-top: 18px; }
+        .recent-posts ul { padding-left: 18px; }
+        @media (max-width: 700px) {
+            .container { flex-direction: column;
+                 padding: 0 8px; }
+            aside { margin-top: 18px; }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+<header>
+    <div>MyBlog</div>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">Blog</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+    </nav>
+</header>
+<section class="hero">
+    <h2>The Beauty and Basics of Badminton</h2>
+    <div>By Praveen Kumar Ande | August 12, 2025</div>
+</section>
+<div class="container">
+    <main>
+        <p>Badminton is a fast-paced and exciting sport enjoyed by millions. Whether for fun or competition, it keeps you active and builds friendships.</p>
+        <h3>Getting Started</h3>
+        <p>All you need is a racket, shuttlecock, and net. Play indoors or outdoors. Hit the shuttle over the net and land it in your opponent's court.</p>
+        <img src="C:\Users\praveen\Dropbox\PC\Desktop\download.jpg" alt="Badminton Court">
+        <h3>Benefits</h3>
+        <p>Badminton improves hand-eye coordination, agility, and fitness. It's a great way to relieve stress and have fun.</p>
+        <img src="C:\Users\praveen\Dropbox\PC\Desktop\1.webp" alt="Badminton Game">
+        <h3>Tips for Beginners</h3>
+        <p>Start with basic shots and footwork. Practice often. Enjoy the game and stay consistent!</p>
+        <img src="C:\Users\praveen\Dropbox\PC\Desktop\download (1).jpg" alt="Badminton Practice">
+        <a href="#" class="cta-btn">Join a Badminton Club</a>
+    </main>
+    <aside>
+        <div class="author">
+            <img src="C:\Users\praveen\Dropbox\PC\Desktop\WhatsApp Image 2025-08-04 at 09.50.43_1adb6317.jpg" alt="Praveen Kumar Ande">
+            <div class="author-name">Praveen Kumar Ande</div>
+            <div class="author-bio">Badminton enthusiast and blogger. Sharing tips and stories about the game.</div>
+            <div class="author-social">
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="recent-posts-title">Recent Posts</div>
+        <div class="recent-posts">
+            <ul>
+                <li><a href="#">Choosing the Right Racket</a></li>
+                <li><a href="#">Warm-up Exercises</a></li>
+                <li><a href="#">Top 5 Badminton Drills</a></li>
+            </ul>
+        </div>
+    </aside>
+</div>
+<footer>
+    &copy; 2025 Praveen Kumar Ande. All rights reserved.

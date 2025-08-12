@@ -1,0 +1,17 @@
+.container {
+    background: #eee;
+    padding: 20px;
+}
+
+.box1 {
+    background: rgb(238, 171, 15);
+    margin-bottom: 50px; /* space below first div */
+}
+
+.box2 {
+    background: rgb(235, 17, 38);
+    margin-left: 20px;   /* move second div to the right */
+    margin-top: 10px;
+    padding: 10px;
+    width: 120px;
+}
