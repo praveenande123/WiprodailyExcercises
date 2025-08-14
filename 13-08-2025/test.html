@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quiz App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 500px;
+            margin: auto;
+            padding-top: 30px;
+            text-align: center;
+        }
+        .question {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+        .options button {
+            display: block;
+            margin: 8px auto;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 80%;
+        }
+        .feedback {
+            margin-top: 15px;
+            font-weight: bold;
+        }
+        .score {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+        #nextBtn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Quiz App</h1>
+    <div class="question" id="question"></div>
+    <div class="options" id="options"></div>
+    <div class="feedback" id="feedback"></div>
+    <div class="score" id="score"></div>
+    <button id="nextBtn" onclick="nextQuestion()" style="display:none;">Next Question</button>
+
+    <script>
+        const quizData = [
+            {
+                question: "What is the capital of France?",
+                options: ["Berlin", "Paris", "Madrid", "Rome"],
+                correct: "Paris"
+            },
+            {
+                question: "Which planet is known as the Red Planet?",
+                options: ["Venus", "Mars", "Jupiter", "Saturn"],
+                correct: "Mars"
+            },
+            {
+                question: "Who wrote 'Hamlet'?",
+                options: ["Charles Dickens", "William Shakespeare", "Leo Tolstoy", "Mark Twain"],
+                correct: "William Shakespeare"
+            }
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+
+        function loadQuestion() {
+            const q = quizData[currentQuestion];
+            document.getElementById("question").innerText = q.question;
+            document.getElementById("options").innerHTML = "";
+            document.getElementById("feedback").innerText = "";
+            document.getElementById("nextBtn").style.display = "none";
+
+            q.options.forEach(option => {
+                const btn = document.createElement("button");
+                btn.innerText = option;
+                btn.onclick = () => checkAnswer(option);
+                document.getElementById("options").appendChild(btn);
+            });
+
+            document.getElementById("score").innerText = `Score: ${score}/${quizData.length}`;
+        }
+
+        function checkAnswer(selected) {
+            const correctAnswer = quizData[currentQuestion].correct;
+            if (selected === correctAnswer) {
+                document.getElementById("feedback").innerText = "✅ Correct!";
+                score++;
+            } else {
+                document.getElementById("feedback").innerText = `❌ Wrong! Correct answer: ${correctAnswer}`;
+            }
+
+            // Disable all buttons after answer
+            Array.from(document.getElementById("options").children).forEach(btn => btn.disabled = true);
+
+            document.getElementById("score").innerText = `Score: ${score}/${quizData.length}`;
+            document.getElementById("nextBtn").style.display = "inline-block";
+        }
+
+        function nextQuestion() {
+            currentQuestion++;
+            if (currentQuestion < quizData.length) {
+                loadQuestion();
+            } else {
+                document.getElementById("question").innerText = "Quiz Completed!";
+                document.getElementById("options").innerHTML = "";
+                document.getElementById("feedback").innerText = `Final Score: ${score}/${quizData.length}`;
+                document.getElementById("nextBtn").style.display = "none";
+            }
+        }
+
+        // Load the first question
+        loadQuestion();
+    </script>
+
+</body>
+</html>

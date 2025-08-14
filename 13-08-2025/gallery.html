@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Image Gallery</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        img {
+            width: 400px;
+            height: 250px;
+            object-fit: cover;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+        }
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Simple Image Gallery</h1>
+    <img id="galleryImage" src="" alt="Gallery Image">
+    <br>
+    <button onclick="prevImage()">Prev</button>
+    <button onclick="nextImage()">Next</button>
+
+    <script>
+        
+        const images = [
+            "https://picsum.photos/id/1015/600/400",
+            "https://picsum.photos/id/1016/600/400",
+            "https://picsum.photos/id/1018/600/400",
+            "https://picsum.photos/id/1020/600/400"
+        ];
+
+        let currentIndex = 0;
+
+        // Function to display the current image
+        function showImage(index) {
+            document.getElementById("galleryImage").src = images[index];
+        }
+
+        // Show first image initially
+        showImage(currentIndex);
+
+        // Show next image
+        function nextImage() {
+            currentIndex = (currentIndex + 1) % images.length;
+            showImage(currentIndex);
+        }
+
+        // Show previous image
+        function prevImage() {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            showImage(currentIndex);
+        }
+    </script>
+
+</body>
+</html>
