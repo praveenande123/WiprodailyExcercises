@@ -6,7 +6,6 @@ import jakarta.validation.constraints.NotBlank;
 @Entity
 public class Employee {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotBlank(message = "Name is mandatory")
@@ -14,8 +13,9 @@ public class Employee {
 
     @NotBlank(message = "Contract type is mandatory")
     private String contract;
-
+    @NotBlank(message = "Address is mandatory")
     private String address;
+    @NotBlank(message = "Department is mandatory")
     private String department;
 
     public Long getId() { return id; }

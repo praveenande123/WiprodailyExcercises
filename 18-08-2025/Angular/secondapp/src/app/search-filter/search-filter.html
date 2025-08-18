@@ -1,0 +1,9 @@
+<div class="search-container">
+  <input type="text" [(ngModel)]="searchText" placeholder="Type to search..." />
+
+  <ul class="name-list">
+    <li *ngFor="let name of filteredNames">
+      {{ name }}
+    </li>
+  </ul>
+</div>

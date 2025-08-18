@@ -4,27 +4,48 @@ import com.wipro.employee.entity.Employee;
 import com.wipro.employee.exception.EmployeeNotFoundException;
 import com.wipro.employee.repository.EmployeeRepository;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
 
     private final EmployeeRepository repository;
-    public EmployeeServiceImpl(EmployeeRepository repository) { this.repository = repository; }
 
-    @Override
-    public Employee saveEmployee(Employee employee) { return repository.save(employee); }
-
-    @Override
-    public Employee getEmployeeById(Long id) {
-        return repository.findById(id).orElseThrow(() -> new EmployeeNotFoundException("Employee not found with id " + id));
+    public EmployeeServiceImpl(EmployeeRepository repository) {
+        this.repository = repository;
     }
 
     @Override
-    public List<Employee> getAllEmployees() { return repository.findAll(); }
+    public Employee saveEmployee(Employee employee) {
+        return repository.save(employee);
+    }
 
     @Override
-    public List<Employee> searchEmployees(String keyword) { return repository.findByNameContainingIgnoreCase(keyword); }
+    public Employee getEmployeeById(Long id) {
+        return repository.findById(id)
+                .orElseThrow(() -> new EmployeeNotFoundException("Employee not found with id " + id));
+    }
+
+    @Override
+    public List<Employee> getAllEmployees() {
+        return repository.findAll();
+    }
+
+    @Override
+    public List<Employee> searchEmployees(String keyword) {
+        if (keyword == null || keyword.isEmpty()) {
+            return repository.findAll();
+        }
+
+        try {
+            Long id = Long.parseLong(keyword);  // try converting keyword to ID
+            return repository.findByNameContainingIgnoreCaseOrId(keyword, id);
+        } catch (NumberFormatException e) {
+            // if keyword is not a number, search only by name
+            return repository.findByNameContainingIgnoreCaseOrId(keyword, null);
+        }
+    }
 
     @Override
     public Employee updateEmployee(Long id, Employee employee) {

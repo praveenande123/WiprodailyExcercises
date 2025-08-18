@@ -1,0 +1,23 @@
+<div>
+  <label for="colorSelect">Select a color:</label>
+<select #colorSelect (change)="onColorChange(colorSelect.value)">
+
+    <option value="black">Black</option>
+    <option value="red">Red</option>
+    <option value="green">Green</option>
+    <option value="blue">Blue</option>
+    <option value="orange">Orange</option>
+  </select>
+</div>
+
+<div style="margin-top: 20px;" [ngSwitch]="selectedColor">
+  <p [style.color]="selectedColor">
+    <strong *ngSwitchCase="'black'">Black</strong>
+    <strong *ngSwitchCase="'red'">Red</strong>
+    <strong *ngSwitchCase="'green'">Green</strong>
+    <strong *ngSwitchCase="'blue'">Blue</strong>
+    <strong *ngSwitchCase="'orange'">Orange</strong>
+    <strong *ngSwitchDefault>Unknown</strong>
+    !
+  </p>
+</div>
