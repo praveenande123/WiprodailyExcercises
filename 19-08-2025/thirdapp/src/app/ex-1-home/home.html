@@ -1,0 +1,16 @@
+<!-- <div class="container mt-5">
+  <h2 class="text-center">Welcome to Fruit Store 🍎🍌🥭</h2>
+  <app-display-list></app-display-list>
+</div> -->
+<!-- ex-5 -->
+<!-- <h2>Fruit List</h2>
+<app-display-list [fruits]="fruits"></app-display-list> -->
+<!-- ex-7 -->
+<app-display-list 
+  [fruits]="fruits" 
+  (fruitRemoved)="onFruitRemoved($event)">
+</app-display-list>
+
+
+
+

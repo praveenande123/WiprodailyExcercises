@@ -1,0 +1,12 @@
+.style1 {
+  color: black;
+  background-color: teal;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.style2 {
+  font-weight: bold;
+  font-size: 18px;
+  border: 2px solid darkblue;
+}

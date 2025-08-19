@@ -1,0 +1,14 @@
+.app{
+    color:rgb(18, 18, 19);
+   font: optional;
+ 
+}
+.app1{
+    border: #282c34 1px solid;
+    padding: 200px;
+    border-radius: 10px;
+}
+.app2{
+    width: 500%;
+    height: 500px;
+}

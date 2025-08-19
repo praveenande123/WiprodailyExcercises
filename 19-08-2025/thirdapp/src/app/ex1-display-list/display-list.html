@@ -1,0 +1,29 @@
+<!-- <div class="container mt-4">
+  <div class="row g-4">
+    <div class="col-sm-6 col-md-4 col-lg-3" *ngFor="let fruit of fruits">
+      <div class="card h-100 shadow-sm">
+        <img [src]="fruit.image" class="card-img-top" alt="{{ fruit.name }}">
+        <div class="card-body text-center">
+          <h5 class="card-title">{{ fruit.name }}</h5>
+          <p class="card-text">{{ fruit.description }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+<!-- <div class="fruit-grid">
+  <div class="fruit-card" *ngFor="let fruit of fruits">
+    <img [src]="fruit.image" [alt]="fruit.name" />
+    <h3>{{ fruit.name }}</h3>
+    <p>{{ fruit.description }}</p>
+  </div>
+</div> -->
+
+<div class="fruit-grid">
+  <div class="fruit-card" *ngFor="let fruit of fruits; let i = index">
+    <img [src]="fruit.image" [alt]="fruit.name" />
+    <h3>{{ fruit.name }}</h3>
+    <p>{{ fruit.description }}</p>
+    <button (click)="removeFruit(i)">Remove</button>
+  </div>
+</div>
