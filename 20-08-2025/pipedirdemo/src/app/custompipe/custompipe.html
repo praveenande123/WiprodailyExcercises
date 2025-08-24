@@ -1,0 +1,9 @@
+<div style="margin:20px;">
+  <h2>Celsius to Fahrenheit Converter</h2>
+
+  <input type="number" [(ngModel)]="celsius" placeholder="Enter °C" />
+
+  <p *ngIf="celsius !== null">
+    Output: {{ celsius | ctof }}
+  </p>
+</div>

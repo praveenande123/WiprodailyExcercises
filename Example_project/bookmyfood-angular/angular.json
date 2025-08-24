@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json.schemastore.org/angular.json",
+  "version": 1,
+  "projects": {
+    "ui-bookmyfood": {
+      "projectType": "application",
+      "root": "",
+      "sourceRoot": "src",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/ui-bookmyfood",
+            "index": "src/index.html",
+            "main": "src/main.ts",
+            "polyfills": [],
+            "tsConfig": "tsconfig.app.json"
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "ui-bookmyfood:build"
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "ui-bookmyfood",
+  "cli": {
+    "analytics": "266cee9b-3567-4e9a-b2e5-f73e59671df7"
+  }
+}

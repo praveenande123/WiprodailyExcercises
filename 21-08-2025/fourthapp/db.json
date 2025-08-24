@@ -1,0 +1,26 @@
+{
+  "vehicles": [
+    {
+      "id": "1",
+     "make": "Toyota",
+      "fuelType": "Hybrid",
+      "model": "Corolla",
+      "price": 16000
+      
+    },
+    {
+      "id": "2",
+      "make": "Hyundai",
+      "fuelType": "Diesel",
+      "model": "Creta",
+      "price": 18000
+    },
+    {
+      "id": "3",
+      "make": "Tesla",
+      "fuelType": "Electric",
+      "model": "Model 3",
+      "price": 37000
+    }
+  ]
+}

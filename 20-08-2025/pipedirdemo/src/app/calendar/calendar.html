@@ -1,0 +1,10 @@
+<div style="margin:20px;">
+<input 
+    type="date" 
+    [(ngModel)]="selectedDate"
+  />
+
+   <p *ngIf="selectedDate">
+    Selected Date: {{ selectedDate | date:'short' }}
+  </p>
+</div>
