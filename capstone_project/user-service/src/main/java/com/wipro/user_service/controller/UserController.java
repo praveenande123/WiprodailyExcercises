@@ -1,43 +1,62 @@
 package com.wipro.user_service.controller;
 
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.wipro.user_service.entity.User;
-import com.wipro.user_service.security.JwtUtil;
 import com.wipro.user_service.service.UserService;
+
+
 
 @RestController
 @RequestMapping("/user")
 public class UserController {
-  private final UserService svc;
-  private final JwtUtil jwt;
 
-  public UserController(UserService svc, JwtUtil jwt) { this.svc=svc; this.jwt=jwt; }
-
-  @PostMapping("/register")
-  public ResponseEntity<User> register(@RequestBody User u) {
-    return ResponseEntity.ok(svc.register(u));
-  }
-
-  @PostMapping("/login")
-  public ResponseEntity<?> login(@RequestBody Map<String,String> body) {
-    var user = svc.findByUsername(body.get("username"))
-                  .orElseThrow(() -> new RuntimeException("Bad credentials"));
-    if(!new BCryptPasswordEncoder().matches(body.get("password"), user.getPassword()))
-      return ResponseEntity.status(401).body("Invalid credentials");
-
-    return ResponseEntity.ok(Map.of("token", jwt.generateToken(user)));
-  }
-
-  @GetMapping
-  public List<User> list(){ return svc.allUsers(); }
+	private final UserService service;
+	
+	public UserController (UserService service)
+	{
+		this.service = service;
+	}
+	
+	@PostMapping
+	public User createUser(@RequestBody User user)
+	{
+		return service.saveUser(user);
+	}
+	
+	@GetMapping
+	public List<User> getAllUsers()
+	{
+		return service.getAllUsers();
+	}
+	
+	@GetMapping("/{id}")
+	public ResponseEntity<User> getUserById(@PathVariable Long id)
+	{
+		return service.getUserById(id)
+				.map(ResponseEntity::ok)
+				.orElse(ResponseEntity.notFound().build());
+	}
+	
+	@PutMapping
+	public User updateUser(@RequestBody User user)
+	{
+		return service.updateUser(user);
+	}
+	
+	@DeleteMapping("/{id}")
+	public void deleteUser(@PathVariable Long id)
+	{
+		service.deleteUser(id);
+	}
 }
