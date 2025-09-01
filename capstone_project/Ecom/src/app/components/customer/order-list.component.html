@@ -1,0 +1,11 @@
+
+<h4>My Orders</h4>
+<div class="list-group">
+  <a class="list-group-item list-group-item-action" *ngFor="let o of orders" [routerLink]="['/orders', o.id]">
+    <div class="d-flex justify-content-between">
+      <div>#{{o.id}} • {{o.status}}</div>
+      <div>{{o.createdAt | date:'medium'}}</div>
+    </div>
+  </a>
+  <div *ngIf="!orders.length" class="text-muted text-center py-5">No orders yet.</div>
+</div>

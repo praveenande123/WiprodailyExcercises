@@ -1,0 +1,23 @@
+
+<div class="row justify-content-center mt-5">
+  <div class="col-md-6">
+    <div class="card card-shadow p-4">
+      <h4 class="mb-3 text-center">Login</h4>
+      <form [formGroup]="form" (ngSubmit)="submit()">
+        <div class="mb-3">
+          <label>Email</label>
+          <input class="form-control" formControlName="email" type="email" placeholder="you@example.com">
+        </div>
+        <div class="mb-3">
+          <label>Password</label>
+          <input class="form-control" formControlName="password" type="password" placeholder="••••">
+        </div>
+        <button class="btn btn-primary w-100" [disabled]="loading">Login</button>
+        <div class="text-danger mt-2" *ngIf="error">{{ error }}</div>
+      </form>
+      <div class="text-center mt-3">
+        <a routerLink="/register">New user? Register</a>
+      </div>
+    </div>
+  </div>
+</div>

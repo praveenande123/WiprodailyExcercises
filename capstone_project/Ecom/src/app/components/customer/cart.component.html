@@ -1,0 +1,19 @@
+
+<h4>My Cart</h4>
+<table class="table align-middle">
+  <thead class="table-light"><tr><th>Product</th><th style="width:140px">Qty</th><th>Price</th><th>Total</th><th></th></tr></thead>
+  <tbody>
+    <tr *ngFor="let it of items">
+      <td>{{it.product.name}}</td>
+      <td><input type="number" class="form-control" [(ngModel)]="it.quantity" (change)="update(it)"></td>
+      <td>{{it.product.price | currency}}</td>
+      <td>{{it.product.price * it.quantity | currency}}</td>
+      <td class="text-end"><button class="btn btn-outline-danger btn-sm" (click)="remove(it)">Remove</button></td>
+    </tr>
+    <tr *ngIf="!items.length"><td colspan="5" class="text-center text-muted">Your cart is empty.</td></tr>
+  </tbody>
+</table>
+<div class="d-flex justify-content-end" *ngIf="items.length">
+  <div class="me-3 fw-semibold">Total: {{ total | currency }}</div>
+  <button class="btn btn-primary" (click)="checkout()">Checkout</button>
+</div>
